@@ -13,13 +13,13 @@ class NewsItemViewHolder(private val binding: ItemNewsBinding) :
             binding.apply {
                 title.text = item.title
                 author.text = item.author
+                viewmore.setOnClickListener {
+                    onClick?.invoke(item)
+                }
             }
             Glide.with(binding.root)
                 .load(item.urlToImage)
                 .into(binding.userImage)
-            itemView.setOnClickListener {
-                onClick?.invoke(item)
-            }
         }
     }
 }
